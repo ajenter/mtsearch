@@ -2,6 +2,7 @@
 
 #include "FileReading.h"
 #include "Matching.h"
+#include "Utils.h"
 
 #include <algorithm>
 #include <cassert>
@@ -43,11 +44,7 @@ using Chunks = std::vector<Chunk>;
 
 std::ostream& operator<<(std::ostream& os, const Chunks& chs)
 {
-    os << "Chunks[" << chs.size() << "]{";
-    for (auto ch : chs)
-        os << ch << ";";
-    os << "}";
-    return os;
+    return printContainer(os, chs);
 }
 
 Chunks splitIntoOverlappingChunks(size_t totalSize, size_t chunkLen, size_t overlap)

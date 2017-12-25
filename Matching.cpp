@@ -99,6 +99,9 @@ void MatchResult::add(const MatchResult& mr)
     matches.insert(matches.end(), mr.matches.begin(), mr.matches.end());
 }
 
+// before using results, sort and uniquefy them
+// this is needed because we use vectors instead of sets
+// vectors were preferred because of memory effectiveness
 void MatchResult::finalize()
 {
     std::sort(lineStarts.begin(), lineStarts.end());
