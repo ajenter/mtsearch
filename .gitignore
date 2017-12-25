@@ -30,3 +30,12 @@
 *.exe
 *.out
 *.app
+.clang-format
+.hgignore
+*.vsp
+.hg/
+.vs/
+build/
+build-gcc/
+cmake-build-debug/
+*.psess
