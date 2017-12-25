@@ -3,6 +3,7 @@
 #include "FileReading.h"
 #include "Matching.h"
 
+#include <algorithm>
 #include <cassert>
 #include <chrono>
 #include <future>
