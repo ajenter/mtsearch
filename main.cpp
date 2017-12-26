@@ -13,12 +13,10 @@ void displayResult(const FindResult& result)
 {
     const auto tab = setw(8);
 
-    cout << tab << result.size() << endl;
+    cout << result.size() << endl;
 
     for (auto r : result) {
-        cout << tab << r.line
-             << tab << r.column
-             << " " << r.matchText << endl;
+        cout << r.line << " " << r.column << " " << r.matchText << endl;
     }
 }
 
