@@ -105,8 +105,10 @@ void MatchResult::add(const MatchResult& mr)
 void MatchResult::finalize()
 {
     std::sort(lineStarts.begin(), lineStarts.end());
-    std::unique(lineStarts.begin(), lineStarts.end());
+    lineStarts.erase(std::unique(lineStarts.begin(), lineStarts.end()),
+                     lineStarts.end());
 
     std::sort(matches.begin(), matches.end());
-    std::unique(matches.begin(), matches.end());
+    matches.erase(std::unique(matches.begin(), matches.end()),
+                  matches.end());
 }
