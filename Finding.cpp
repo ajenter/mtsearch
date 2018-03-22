@@ -80,10 +80,9 @@ FindResult resolveMatches(MatchResult&& matchResult)
             ++linesIt;
             ++line;
         }
-        auto column = size_t(mr.offset - lineStart);
+        const auto column = size_t(mr.offset - (lineStart == 0 ? -1 : lineStart));
         fr.push_back({line, column, mr.matchText});
     }
-
     return fr;
 }
 
