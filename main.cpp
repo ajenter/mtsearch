@@ -10,9 +10,7 @@ using std::endl;
 using std::setw;
 
 void displayResult(const FindResult& result)
-{
-    const auto tab = setw(8);
-
+{    
     cout << result.size() << endl;
 
     for (auto r : result) {

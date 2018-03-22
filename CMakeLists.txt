@@ -19,6 +19,12 @@ set(Boost_USE_STATIC_LIBS true)
 find_package(Boost COMPONENTS filesystem unit_test_framework REQUIRED)
 include_directories(SYSTEM ${Boost_INCLUDE_DIR})
 
+if (UNIX)
+        find_library(PTHREAD_LIBRARY pthread)
+else()
+    set (PTHREAD_LIBRARY "")
+endif()
+
 set(SOURCES 
     CommandLine.h
     CommandLine.cpp
@@ -33,7 +39,7 @@ set(SOURCES
     )
 
 add_executable(mtsearch ${SOURCES} main.cpp)
-target_link_libraries(mtsearch PUBLIC ${Boost_LIBRARIES})
+target_link_libraries(mtsearch PUBLIC ${Boost_LIBRARIES} ${PTHREAD_LIBRARY})
 
 enable_testing()
 set(TEST_SOURCES    
@@ -43,8 +49,6 @@ set(TEST_SOURCES
     TestMatching.cpp)
 
 add_executable(tests ${TEST_SOURCES} testmain.cpp)
-target_link_libraries(tests PUBLIC ${Boost_LIBRARIES})
+target_link_libraries(tests PUBLIC ${Boost_LIBRARIES} ${PTHREAD_LIBRARY})
 add_dependencies(tests mtsearch)
 add_test(NAME Tests COMMAND tests)
-
-
